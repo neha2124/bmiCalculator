@@ -14,28 +14,29 @@ export default function App() {
   const handlegender = (event) => {
     setGender(event.target.value);
   };
+
   // check male overview according to bmi
   const Male = () => {
     if (Bmi < 18.5) {
-      setOverview("underWeight");
+      setOverview("You are underWeight");
     } else if (Bmi === 18.5 || Bmi <= 24.5) {
-      setOverview("Normalweight");
+      setOverview("You are Normalweight");
     } else if (Bmi === 25 || Bmi <= 29.5) {
-      setOverview("overWeight");
-    } else if (Bmi > 30) {
-      setOverview("obesity");
+      setOverview("You are overWeight");
+    } else {
+      setOverview("You are obesity");
     }
   };
   // check female overview according to bmi
   const Female = () => {
     if (Bmi < 20.5) {
-      setOverview("underWeight");
+      setOverview("You are underWeight");
     } else if (Bmi === 20.5 || Bmi <= 26.9) {
-      setOverview("Normalweight");
+      setOverview("You are Normalweight");
     } else if (Bmi === 27 || Bmi <= 31.9) {
-      setOverview("overWeight");
-    } else if (Bmi > 32) {
-      setOverview("obesity");
+      setOverview("You are overWeight");
+    } else {
+      setOverview("You are obesity");
     }
   };
 
@@ -51,15 +52,12 @@ export default function App() {
   // take height and weight caluculate bmi
   const bmi = (height, weight) => {
     if (height && weight) {
-      setBmi(((weight / (height * height)) * 703).toFixed(1));
+      height = height * 0.0254;
+      setBmi((weight / (height * height)).toFixed(1));
+      genderOverview();
     } else {
       setBmi("invalid input");
     }
-  };
-  // call both bmi and gender function
-  const submit = () => {
-    bmi(height, weight);
-    genderOverview();
   };
 
   return (
@@ -102,7 +100,7 @@ export default function App() {
             type="number"
             min="24"
             max="96"
-            placeholder="height"
+            placeholder="height(inches)"
             value={height}
             onChange={(e) => setHeight(e.target.value)}
           />
@@ -119,7 +117,7 @@ export default function App() {
         </div>
         <button
           onClick={() => {
-            submit();
+            bmi(height, weight);
           }}
         >
           submit
