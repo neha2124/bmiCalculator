@@ -3,6 +3,24 @@
   padding: 0;
   box-sizing: border-box;
 }
+.App {
+  /* border:1px solid black; */
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  margin: 50px auto;
+  background-image: linear-gradient(
+    260deg,
+    hsl(240deg 100% 20%) 0%,
+    hsl(311deg 100% 25%) 19%,
+    hsl(334deg 100% 40%) 33%,
+    hsl(6deg 98% 61%) 47%,
+    hsl(37deg 100% 50%) 61%,
+    hsl(55deg 100% 50%) 100%
+  );
+}
 .heading {
   text-align: center;
   margin: 10px;
@@ -35,6 +53,7 @@
   text-align: center;
   font-size: 1.3em;
   margin-top: 10px;
+  font-weight: 700;
 }
 
 button {
